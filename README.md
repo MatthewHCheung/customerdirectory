@@ -11,7 +11,6 @@ Simple Customer Directory (Full-Stack)
 7. npm install express mysql2
 8. node server.mjs
 ## Start the frontend
-9. cd ..
-10. npm install
-11. npm run dev
-12. go to localhost link in the terminal when you enter npm run dev
+9.  npm install
+10. npm run dev
+11. go to localhost link in the terminal when you enter npm run dev
