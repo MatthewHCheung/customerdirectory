@@ -8,4 +8,6 @@ Start the frontend
 4. npm run dev
 Start the backend
 5. cd src
+6. npm install cors
+7. npm install express mysql2
 6. node server.mjs
