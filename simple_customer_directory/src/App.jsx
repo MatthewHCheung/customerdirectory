@@ -96,9 +96,9 @@ function App() {
   // html to be returned
   return (
     <>
-      <img
-        src="https://reidpetroleum.com/wp-content/uploads/2014/03/ReidLogo.png"
-      ></img>
+    <a href="https://reidpetroleum.com/" target="_blank" rel="noopener noreferrer">
+      <img src="https://reidpetroleum.com/wp-content/uploads/2014/03/ReidLogo.png"></img>
+    </a>
       <h1>Customer Directory</h1>
       <div className="card">
         <button onClick={() => setShowModal(true)}>Add Customer</button>
