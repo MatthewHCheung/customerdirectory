@@ -14,6 +14,8 @@ function App() {
     contract_expire_date: '',
   });
   const [errors, setErrors] = useState({});
+  const [searchTerm, setSearchTerm] = useState('');
+
 
   useEffect(() => {
     fetch('http://localhost:3000/customers')
@@ -93,8 +95,26 @@ function App() {
         <button onClick={() => setShowModal(true)}>Add Customer</button>
       </div>
 
+
+      <div style={{ marginBottom: '1rem' }}>
+        <input
+          type="text"
+          placeholder="Search by name, email, or company..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          style={{ padding: '0.5rem', width: '300px' }}
+        />
+      </div>
+
+
       <div className="customer-list" style={{ maxHeight: '400px', overflowY: 'auto', width: '1000px' }}>
-        {customers.map((customer) => (
+      {customers
+        .filter((customer) =>
+          customer.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          customer.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          customer.company_name.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+        .map((customer) => (
           <div key={customer.id} className="customer-card" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
             <img
               src={customer.profile_picture_url}
@@ -106,7 +126,7 @@ function App() {
               <p>Email: {customer.email}</p>
               <p>Company: {customer.company_name}</p>
               <p>Phone: {customer.phone}</p>
-              <p>Contract: {customer.contract_start_date} to {customer.contract_expire_date}</p>
+              <p>Contract: {new Date(customer.contract_start_date).toISOString().split('T')[0]} to {new Date(customer.contract_expire_date).toISOString().split('T')[0]}</p>
             </div>
             <button onClick={() => handleDelete(customer.id)} style={{backgroundColor: 'red',marginLeft: 'auto' }}>Delete Customer</button>
           </div>
