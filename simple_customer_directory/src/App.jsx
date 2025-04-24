@@ -24,6 +24,8 @@ function App() {
       .catch((err) => console.error('Failed to fetch customers:', err));
   }, []);
 
+
+  // Validate form data
   const validate = () => {
     const newErrors = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -41,6 +43,7 @@ function App() {
     return Object.keys(newErrors).length === 0;
   };
 
+  // Handle form submission for adding a new customer
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validate()) return;
@@ -73,6 +76,7 @@ function App() {
       });
   };
 
+  // Handle delete customer
   const handleDelete = (customerId) => {
     fetch(`http://localhost:3000/customers/${customerId}`, {
       method: 'DELETE',
@@ -88,8 +92,13 @@ function App() {
       });
   };
 
+
+  // html to be returned
   return (
     <>
+      <img
+        src="https://reidpetroleum.com/wp-content/uploads/2014/03/ReidLogo.png"
+      ></img>
       <h1>Customer Directory</h1>
       <div className="card">
         <button onClick={() => setShowModal(true)}>Add Customer</button>
