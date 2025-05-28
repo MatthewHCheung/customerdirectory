@@ -1,4 +1,4 @@
-# employee database website
+# customer directory
 Simple Customer Directory (Full-Stack)
 ## How to start up the application:
 1. install node.js -> https://nodejs.org/en
